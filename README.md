@@ -1,137 +1,105 @@
-# 📊 LangChain CSV Data Analyst
+# 🎬 Movie Recommendation System
 
-A natural language interface for analyzing any CSV file, powered by **LangChain** and **OpenAI GPT**. Ask plain English questions — get instant data insights.
+A content-based and collaborative filtering movie recommendation system built with Python, using custom movie, ratings, and user datasets.
 
-[![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)](https://python.org)
-[![LangChain](https://img.shields.io/badge/LangChain-0.2-green?style=for-the-badge)](https://langchain.com)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.38-red?style=for-the-badge)](https://streamlit.io)
-[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--3.5-orange?style=for-the-badge)](https://openai.com)
-
----
-
-## 🎯 What It Does
-
-Upload any CSV file and chat with your data in plain English:
-
-> *"What is the total revenue by region?"*
-> *"Which product has the highest sales in Q3?"*
-> *"Show average discount per sales rep."*
-> *"How many orders have quantity greater than 5?"*
-
-The LangChain agent writes Python/Pandas code under the hood and returns a human-readable answer — no SQL, no formulas needed.
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
 ---
 
-## 🚀 Demo
+## 📌 Overview
 
-![App Demo](assets/demo.gif)
+This project builds a movie recommendation engine that suggests films based on user preferences and movie metadata. It combines **content-based filtering** (movie genres, metadata) and **collaborative filtering** (user ratings patterns) to generate personalized recommendations.
+
+---
+
+## 🚀 Features
+
+- 🎯 **Content-Based Filtering** — recommends movies similar to ones a user already liked
+- 👥 **Collaborative Filtering** — finds patterns across users with similar tastes
+- 📊 **Exploratory Data Analysis** — genre distribution, rating trends, user behavior
+- 🔍 **Cosine Similarity** for content matching
+- 🤖 Pre-trained recommender model (`recommender_model.py`)
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Component | Technology |
-|-----------|-----------|
-| LLM | OpenAI GPT-3.5 / GPT-4o |
-| Agent Framework | LangChain CSV Agent |
-| Frontend | Streamlit |
-| Data Handling | Pandas, NumPy |
-
----
-
-## ⚙️ Setup
-
-**1. Clone the repo**
-```bash
-git clone https://github.com/Rishikuber/langchain-csv-analyst.git
-cd langchain-csv-analyst
-```
-
-**2. Create a virtual environment**
-```bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# Mac/Linux
-source venv/bin/activate
-```
-
-**3. Install dependencies**
-```bash
-pip install -r requirements.txt
-```
-
-**4. Generate sample data (optional)**
-```bash
-python generate_sample_data.py
-```
-
-**5. Run the app**
-```bash
-streamlit run app.py
-```
-
-Open `http://localhost:8501` in your browser.
-
----
-
-## 🔑 API Key
-
-This project requires an OpenAI API key.
-
-1. Go to [platform.openai.com](https://platform.openai.com)
-2. Create an account and generate an API key
-3. Enter the key in the app's sidebar (never commit it to GitHub)
-
-**Estimated cost:** ~$0.01–0.05 per session using GPT-3.5-turbo.
+| Tool | Purpose |
+|------|---------|
+| Python | Core language |
+| Pandas, NumPy | Data manipulation |
+| Scikit-learn | Similarity computation |
+| Matplotlib, Seaborn | Visualizations |
+| Jupyter Notebook | Development & analysis |
 
 ---
 
 ## 📂 Project Structure
 
 ```
-langchain-csv-analyst/
+movie-recommendation-system/
 │
-├── app.py                    # Streamlit UI
-├── langchain_agent.py        # LangChain agent logic
-├── generate_sample_data.py   # Generates demo CSV
-├── sample_sales_data.csv     # 500-row sales dataset (demo)
-├── requirements.txt
+├── recommendation_system.ipynb   # Full analysis, EDA & model building
+├── recommender_model.py          # Recommendation logic & functions
+├── main.py                       # Entry point to run recommendations
+├── recommender_movies.csv        # Movie metadata (title, genre, etc.)
+├── recommender_ratings.csv       # User ratings data
+├── recommender_users.csv         # User information
 └── README.md
 ```
 
 ---
 
-## 💬 Example Questions to Try
+## ⚙️ Setup & Usage
 
-With the included **sample sales dataset**:
+```bash
+# Clone the repository
+git clone https://github.com/Rishikuber/movie-recommendation-system.git
+cd movie-recommendation-system
 
-| Question | What You'll Learn |
-|----------|------------------|
-| What is total revenue by region? | Regional performance |
-| Which product generates the most revenue? | Top product |
-| What is the average discount by sales rep? | Rep efficiency |
-| How many orders were placed in Q2? | Quarterly volume |
-| Show top 5 customers by revenue | Customer ranking |
-| What is the month with highest sales? | Seasonal trends |
+# Install dependencies
+pip install pandas numpy scikit-learn matplotlib seaborn jupyter
 
----
+# Run the recommender
+python main.py
 
-## 🔮 Roadmap
-
-- [ ] Support for multiple CSV uploads
-- [ ] Auto chart generation (matplotlib/plotly)
-- [ ] Export Q&A history to PDF
-- [ ] Add memory for follow-up questions
-- [ ] Support local LLMs (Ollama) for free usage
+# Or explore the full notebook
+jupyter notebook recommendation_system.ipynb
+```
 
 ---
 
-## 📚 Key Concepts
+## 📊 Sample Output
 
-- **LangChain CSV Agent** — wraps a Pandas DataFrame with an LLM, enabling natural language queries
-- **OpenAI Functions Agent** — uses function calling for structured, reliable output
-- **RAG-adjacent** — the agent retrieves relevant data context before generating answers
+```
+Input: User liked "The Dark Knight"
+Recommendations:
+  1. Batman Begins        (Similarity: 0.92)
+  2. Inception            (Similarity: 0.87)
+  3. The Prestige         (Similarity: 0.84)
+  4. Interstellar         (Similarity: 0.81)
+  5. V for Vendetta       (Similarity: 0.78)
+```
+
+---
+
+## 📦 Dataset
+
+Custom datasets included in the repo:
+- `recommender_movies.csv` — movie titles, genres, metadata
+- `recommender_ratings.csv` — user-movie ratings
+- `recommender_users.csv` — user demographic info
+
+---
+
+## 🔮 Future Improvements
+
+- [ ] Add deep learning-based Neural Collaborative Filtering
+- [ ] Build a Streamlit web interface
+- [ ] Deploy via FastAPI
+- [ ] Add real-time personalization
 
 ---
 
@@ -139,8 +107,8 @@ With the included **sample sales dataset**:
 
 **Rishi Kuber** — Data Science Intern @ Zetheta Algorithms
 
-- 🔗 [LinkedIn](https://www.linkedin.com/in/rishi-kuber)
-- 🐙 [GitHub](https://github.com/Rishikuber)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/rishi-kuber)
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/Rishikuber)
 
 ---
 
