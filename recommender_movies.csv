@@ -1,0 +1,21 @@
+movie_id,title,genre
+1,Avengers,Action
+2,Iron Man,Action
+3,Captain America,Action
+4,Thor,Action
+5,Doctor Strange,Action
+6,The Dark Knight,Action
+7,Interstellar,Sci-Fi
+8,Inception,Sci-Fi
+9,The Matrix,Sci-Fi
+10,Avatar,Sci-Fi
+11,Titanic,Romance
+12,The Notebook,Romance
+13,La La Land,Romance
+14,Frozen,Animation
+15,Toy Story,Animation
+16,Finding Nemo,Animation
+17,Coco,Animation
+18,Joker,Drama
+19,The Godfather,Drama
+20,Forrest Gump,Drama
